@@ -27,6 +27,15 @@ const center = {
   lng: 24.1401608,
 };
 
+const options = {
+  zoomControl: false, // Disable zoom control
+  gestureHandling: "none", // Disable all user gestures for the map
+  fullscreenControl: false, // Disable fullscreen control
+  mapTypeControl: false, // Disable map type control
+  streetViewControl: false, // Disable Street View control
+  disableDefaultUI: true, // Disable all default UI
+};
+
 const MyComponent = () => {
   const [map, setMap] = useState({});
   const { isLoaded } = useJsApiLoader({
@@ -51,6 +60,7 @@ const MyComponent = () => {
       zoom={14}
       onLoad={onLoad}
       onUnmount={onUnmount}
+      options={options}
     >
       <Marker position={dormMarker} />
       <Marker position={busPosition} icon={bus} />
