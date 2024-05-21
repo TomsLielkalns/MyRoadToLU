@@ -1,5 +1,6 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { SetStateAction, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
+import bus from "./assets/bus.svg";
 
 const containerStyle = {
   width: "100vw",
@@ -11,9 +12,14 @@ const busPosition = {
   lng: 24.1778137,
 };
 
-const LUMarker = {
+const luMarker = {
   lat: 56.9507886,
   lng: 24.1162251,
+};
+
+const dormMarker = {
+  lat: 56.974907,
+  lng: 24.1826295,
 };
 
 const center = {
@@ -29,7 +35,6 @@ const MyComponent = () => {
   });
 
   const onLoad = useCallback(function callback(map: object) {
-    console.log(map);
     setMap(map);
   }, []);
 
@@ -47,8 +52,9 @@ const MyComponent = () => {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      <Marker position={busPosition} />
-      <Marker position={LUMarker} />
+      <Marker position={dormMarker} />
+      <Marker position={busPosition} icon={bus} />
+      <Marker position={luMarker} />
     </GoogleMap>
   );
 };
