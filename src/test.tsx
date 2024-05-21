@@ -33,7 +33,7 @@ const MyComponent = () => {
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCF6vwCM9RH6H3y_2QSPXxP4WG4mtz60Pc",
   });
-
+  console.log(map);
   const onLoad = useCallback(function callback(map: object) {
     setMap(map);
   }, []);
