@@ -40,8 +40,8 @@ const center = {
 };
 
 const options = {
-  zoomControl: false, // Disable zoom control
-  gestureHandling: "none", // Disable all user gestures for the map
+  // zoomControl: false, // Disable zoom control
+  // gestureHandling: "none", // Disable all user gestures for the map
   fullscreenControl: false, // Disable fullscreen control
   mapTypeControl: false, // Disable map type control
   streetViewControl: false, // Disable Street View control
@@ -56,7 +56,7 @@ const MapComponent = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCF6vwCM9RH6H3y_2QSPXxP4WG4mtz60Pc",
+    googleMapsApiKey: "AIzaSyB8NmfbNxLfNWDLmlcWaeSsDM1nGJVrhD8",
   });
 
   const onLoad = useCallback(function callback(map: object) {
