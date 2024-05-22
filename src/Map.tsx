@@ -56,7 +56,7 @@ const MapComponent = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyB8NmfbNxLfNWDLmlcWaeSsDM1nGJVrhD8",
+    googleMapsApiKey: "AIzaSyCF6vwCM9RH6H3y_2QSPXxP4WG4mtz60Pc",
   });
 
   const onLoad = useCallback(function callback(map: object) {
