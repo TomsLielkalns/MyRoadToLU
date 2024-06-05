@@ -9,13 +9,14 @@ document.documentElement.setAttribute("data-theme", "dark");
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const [currentlyOpenModal, setCurrentlyOpenModal] = useState("");
   console.log(isOpen);
 
   return (
     <>
-      <Overlay isOpen={isOpen} setIsOpen={setIsOpen} isDark={isDark} setIsDark={setIsDark} />
       <MapComponent isDark={isDark} />
-      <Modal />
+      <Modal currentlyOpenModal={currentlyOpenModal} />
+      <Overlay isOpen={isOpen} setIsOpen={setIsOpen} isDark={isDark} setIsDark={setIsDark} />
     </>
   );
 }
