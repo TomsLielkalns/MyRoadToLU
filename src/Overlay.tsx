@@ -35,20 +35,8 @@ const Overlay = ({ isOpen, setIsOpen, isDark, setIsDark }: OverlayProps) => {
             <span></span>
 
             <ul id="menu" style={{ height: isOpen ? "79.6vh" : 0 }}>
-              <a href="#">
+              <a onClick={() => console.log(1)}>
                 <li>Home</li>
-              </a>
-              <a href="#">
-                <li>About</li>
-              </a>
-              <a href="#">
-                <li>Info</li>
-              </a>
-              <a href="#">
-                <li>Contact</li>
-              </a>
-              <a href="https://erikterwan.com/" target="_blank">
-                <li>Show me more</li>
               </a>
             </ul>
           </div>
