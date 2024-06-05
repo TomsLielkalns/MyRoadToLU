@@ -14,8 +14,8 @@ function App() {
 
   return (
     <>
-      <MapComponent isDark={isDark} />
-      <Modal currentlyOpenModal={currentlyOpenModal} />
+      <MapComponent isDark={isDark} setCurrentlyOpenModal={setCurrentlyOpenModal} />
+      <Modal currentlyOpenModal={currentlyOpenModal} setCurrentlyOpenModal={setCurrentlyOpenModal} />
       <Overlay isOpen={isOpen} setIsOpen={setIsOpen} isDark={isDark} setIsDark={setIsDark} />
     </>
   );

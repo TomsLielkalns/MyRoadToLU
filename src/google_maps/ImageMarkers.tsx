@@ -48,9 +48,10 @@ interface ImageMarkersProps {
   isLoaded: boolean;
   isDarkTheme: boolean;
   path: LatLng[];
+  setCurrentlyOpenModal: (modal: string) => void;
 }
 
-export const ImageMarkers = ({ isLoaded, isDarkTheme, path }: ImageMarkersProps) => {
+export const ImageMarkers = ({ isLoaded, isDarkTheme, path, setCurrentlyOpenModal }: ImageMarkersProps) => {
   if (!isLoaded || !google.maps.geometry) {
     // need to wait for map to load to access google object
     return null;
@@ -158,7 +159,12 @@ export const ImageMarkers = ({ isLoaded, isDarkTheme, path }: ImageMarkersProps)
   return (
     <>
       {markersData.map((marker) => (
-        <Marker key={marker.key} position={marker.position} icon={marker.icon} />
+        <Marker
+          key={marker.key}
+          position={marker.position}
+          icon={marker.icon}
+          onClick={() => setCurrentlyOpenModal(marker.key)}
+        />
       ))}
     </>
   );

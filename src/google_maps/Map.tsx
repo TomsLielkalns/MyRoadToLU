@@ -65,6 +65,7 @@ const Slider = ({ value, onChange }: SliderProps) => {
 
 type MapComponentProps = {
   isDark: boolean;
+  setCurrentlyOpenModal: (value: string) => void;
 };
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(value, max));
 
@@ -110,7 +111,7 @@ const getCoordinatesAndPath = (t: number): [LatLng[], { lat: number; lng: number
   return [traveledPath, { lat, lng }];
 };
 
-const MapComponent = ({ isDark }: MapComponentProps) => {
+const MapComponent = ({ isDark, setCurrentlyOpenModal }: MapComponentProps) => {
   const [_, setMap] = useState({});
   const [position, setPosition] = useState(busPath[0]);
   const [travelledPath, setTravelledPath] = useState<LatLng[]>([busPath[0]]);
@@ -189,7 +190,12 @@ const MapComponent = ({ isDark }: MapComponentProps) => {
         />
         <Marker position={dormPos} />
         <Marker position={position} icon={bus} />
-        <ImageMarkers isLoaded={isLoaded} isDarkTheme={isDark} path={travelledPath} />
+        <ImageMarkers
+          isLoaded={isLoaded}
+          isDarkTheme={isDark}
+          path={travelledPath}
+          setCurrentlyOpenModal={setCurrentlyOpenModal}
+        />
       </GoogleMap>
     </>
   );
