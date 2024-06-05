@@ -1,13 +1,15 @@
 import { GoogleMap, Marker, Polyline, useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useEffect, useRef, useState } from "react";
-import bus from "./assets/bus.svg";
+import { dormPos } from "./markerPositions";
+import { bus } from "./markerImages";
+import { ImageMarkers } from "./ImageMarkers";
 
-const containerStyle = {
+export const containerStyle = {
   width: "100vw",
   height: "100vh",
 };
 
-type LatLng = {
+export type LatLng = {
   lat: number;
   lng: number;
 };
@@ -20,19 +22,8 @@ const busPath: LatLng[] = [
   { lat: 56.962274, lng: 24.135035 },
   { lat: 56.958852, lng: 24.12576 },
   { lat: 56.951946, lng: 24.113688 },
+  { lat: 56.950936, lng: 24.115026 },
 ];
-
-const luMarker = {
-  lat: 56.9507886,
-  lng: 24.1162251,
-  title: "LU",
-};
-
-const dormMarker = {
-  lat: 56.974907,
-  lng: 24.1826295,
-  title: "Dienesta viesnīca",
-};
 
 const center = {
   lat: 56.9641074,
@@ -108,11 +99,11 @@ const MapComponent = () => {
     >
       <Polyline
         path={travelledPath}
-        options={{ strokeColor: "#FF0000", strokeOpacity: 1.0, strokeWeight: 2 }}
+        options={{ strokeColor: "#FF0000", strokeOpacity: 1, strokeWeight: 2 }}
       />
-      <Marker position={dormMarker} label={dormMarker.title} />
+      <Marker position={dormPos} />
       <Marker position={position} icon={bus} />
-      <Marker position={luMarker} label={luMarker.title} />
+      <ImageMarkers isLoaded={isLoaded} />
     </GoogleMap>
   );
 };

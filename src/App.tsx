@@ -1,5 +1,5 @@
 import "./test.scss";
-import MapComponent from "./Map";
+import MapComponent from "./google_maps/Map";
 
 function App() {
   return <MapComponent></MapComponent>;
