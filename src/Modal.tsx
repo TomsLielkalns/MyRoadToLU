@@ -127,6 +127,7 @@ const ModalComponent = ({ currentlyOpenModal, setCurrentlyOpenModal }: ModalProp
   }
 
   const html = document.querySelector("html");
+  if (!html) throw new Error("No html element found");
   const compStyles = window.getComputedStyle(html);
   const backgroundColor = compStyles.getPropertyValue("--color-background");
 
