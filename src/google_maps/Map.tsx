@@ -31,19 +31,31 @@ const center = {
   lng: 24.1401608,
 };
 
-const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const sliderScale = 143;
 
-const options = {
-  // zoomControl: false, // Disable zoom control
-  // gestureHandling: "none", // Disable all user gestures for the map
-  fullscreenControl: false, // Disable fullscreen control
-  mapTypeControl: false, // Disable map type control
-  streetViewControl: false, // Disable Street View control
-  disableDefaultUI: true, // Disable all default UI
-  styles: isDarkTheme ? customStyle : undefined,
+const Slider = ({ value, onChange }) => {
+  return (
+    <div style={{ position: "fixed", zIndex: 10000, left: 0, right: 0, bottom: 0 }}>
+      <div className="slidecontainer">
+        <input
+          type="range"
+          min="0"
+          max="1000"
+          value={value}
+          className="slider"
+          id="slider"
+          onChange={onChange}
+        />
+      </div>
+    </div>
+  );
 };
 
-const MapComponent = () => {
+type MapComponentProps = {
+  isDark: boolean;
+};
+
+const MapComponent = ({ isDark }: MapComponentProps) => {
   const [_, setMap] = useState({});
   const [position, setPosition] = useState(busPath[0]);
   const [travelledPath, setTravelledPath] = useState<LatLng[]>([busPath[0]]);
@@ -73,6 +85,16 @@ const MapComponent = () => {
     };
   };
 
+  const options = {
+    // zoomControl: false, // Disable zoom control
+    // gestureHandling: "none", // Disable all user gestures for the map
+    fullscreenControl: false, // Disable fullscreen control
+    mapTypeControl: false, // Disable map type control
+    streetViewControl: false, // Disable Street View control
+    disableDefaultUI: true, // Disable all default UI
+    styles: isDark ? customStyle : undefined,
+  };
+
   useEffect(() => {
     if (busPath.length > 1) {
       const interval = setInterval(() => {
@@ -93,22 +115,31 @@ const MapComponent = () => {
   if (!isLoaded) return <></>;
 
   return (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={14}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-      options={options}
-    >
-      <Polyline
-        path={travelledPath}
-        options={{ strokeColor: "#FF0000", strokeOpacity: 1, strokeWeight: 2 }}
+    <>
+      <Slider
+        value={step.current * sliderScale}
+        onChange={(e) => {
+          step.current = e.target.value / sliderScale;
+        }}
       />
-      <Marker position={dormPos} />
-      <Marker position={position} icon={bus} />
-      <ImageMarkers isLoaded={isLoaded} isDarkTheme={isDarkTheme} path={travelledPath} />
-    </GoogleMap>
+
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={14}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+        options={options}
+      >
+        <Polyline
+          path={travelledPath}
+          options={{ strokeColor: "#FF0000", strokeOpacity: 1, strokeWeight: 2 }}
+        />
+        <Marker position={dormPos} />
+        <Marker position={position} icon={bus} />
+        <ImageMarkers isLoaded={isLoaded} isDarkTheme={isDark} path={travelledPath} />
+      </GoogleMap>
+    </>
   );
 };
 
