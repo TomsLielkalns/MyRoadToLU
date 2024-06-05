@@ -32,7 +32,7 @@ const center = {
 };
 
 const sliderScale = 143;
-
+// @ts-expect-error need fix
 const Slider = ({ value, onChange }) => {
   return (
     <div style={{ position: "fixed", zIndex: 10000, left: 0, right: 0, bottom: 0 }}>
@@ -118,6 +118,7 @@ const MapComponent = ({ isDark }: MapComponentProps) => {
     <>
       <Slider
         value={step.current * sliderScale}
+        // @ts-expect-error need fix
         onChange={(e) => {
           step.current = e.target.value / sliderScale;
         }}
