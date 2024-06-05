@@ -28,78 +28,117 @@ import {
   OrthodoxCathedral,
   FreedomMonument,
   VermaneGarden,
+  LUmarkerDark,
+  VEFpalaceDark,
+  GaisaTiltsDark,
+  EvolutionBuildingDark,
+  NewGertrudesChurchDark,
+  DailesTheaterDark,
+  CornerHouseDark,
+  OldGertrudesChurchDark,
+  ANChurchDark,
+  RadisonsDark,
+  OrthodoxCathedralDark,
+  FreedomMonumentDark,
+  VermaneGardenDark,
 } from "./markerImages";
 
 interface ImageMarkersProps {
   isLoaded: boolean;
+  isDarkTheme: boolean;
 }
 
-export const ImageMarkers = ({ isLoaded }: ImageMarkersProps) => {
+export const ImageMarkers = ({ isLoaded, isDarkTheme }: ImageMarkersProps) => {
   if (!isLoaded) {
     // need to wait for map to load to access google object
     return null;
   }
 
   const markersData = [
-    { position: LUPos, icon: { url: LUmarker, scaledSize: new google.maps.Size(75, 105) }, key: "lu" },
+    {
+      position: LUPos,
+      icon: { url: isDarkTheme ? LUmarkerDark : LUmarker, scaledSize: new google.maps.Size(75, 105) },
+      key: "lu",
+    },
     {
       position: VEFpalacePos,
-      icon: { url: VEFpalace, scaledSize: new google.maps.Size(50, 70) },
+      icon: { url: isDarkTheme ? VEFpalaceDark : VEFpalace, scaledSize: new google.maps.Size(50, 70) },
       key: "vefPalace",
     },
     {
       position: gaisaTiltsPos,
-      icon: { url: GaisaTilts, scaledSize: new google.maps.Size(50, 70) },
+      icon: { url: isDarkTheme ? GaisaTiltsDark : GaisaTilts, scaledSize: new google.maps.Size(50, 70) },
       key: "gaisaTilts",
     },
     {
       position: evolutionBuildingPos,
-      icon: { url: EvolutionBuilding, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? EvolutionBuildingDark : EvolutionBuilding,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "evolutionBuilding",
     },
     {
       position: newGertrudesChurchPos,
-      icon: { url: NewGertrudesChurch, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? NewGertrudesChurchDark : NewGertrudesChurch,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "newGertrudesChurch",
     },
     {
       position: dailesTheaterPos,
-      icon: { url: DailesTheater, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? DailesTheaterDark : DailesTheater,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "dailesTheater",
     },
     {
       position: cornerHousePos,
-      icon: { url: CornerHouse, scaledSize: new google.maps.Size(50, 70) },
+      icon: { url: isDarkTheme ? CornerHouseDark : CornerHouse, scaledSize: new google.maps.Size(50, 70) },
       key: "cornerHouse",
     },
     {
       position: oldGertrudesChurchPos,
-      icon: { url: OldGertrudesChurch, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? OldGertrudesChurchDark : OldGertrudesChurch,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "oldGertrudesChurch",
     },
     {
       position: ANChurchPos,
-      icon: { url: ANChurch, scaledSize: new google.maps.Size(50, 70) },
+      icon: { url: isDarkTheme ? ANChurchDark : ANChurch, scaledSize: new google.maps.Size(50, 70) },
       key: "anChurch",
     },
     {
       position: radisonsPos,
-      icon: { url: Radisons, scaledSize: new google.maps.Size(50, 70) },
+      icon: { url: isDarkTheme ? RadisonsDark : Radisons, scaledSize: new google.maps.Size(50, 70) },
       key: "radisons",
     },
     {
       position: orthodoxCathedralPos,
-      icon: { url: OrthodoxCathedral, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? OrthodoxCathedralDark : OrthodoxCathedral,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "orthodoxCathedral",
     },
     {
       position: freedomMonumentPos,
-      icon: { url: FreedomMonument, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? FreedomMonumentDark : FreedomMonument,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "freedomMonument",
     },
     {
       position: vermaneGardenPos,
-      icon: { url: VermaneGarden, scaledSize: new google.maps.Size(50, 70) },
+      icon: {
+        url: isDarkTheme ? VermaneGardenDark : VermaneGarden,
+        scaledSize: new google.maps.Size(50, 70),
+      },
       key: "vermaneGarden",
     },
   ];

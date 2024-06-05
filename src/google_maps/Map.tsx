@@ -107,7 +107,7 @@ const MapComponent = () => {
       />
       <Marker position={dormPos} />
       <Marker position={position} icon={bus} />
-      <ImageMarkers isLoaded={isLoaded} />
+      <ImageMarkers isLoaded={isLoaded} isDarkTheme={isDarkTheme} />
     </GoogleMap>
   );
 };
