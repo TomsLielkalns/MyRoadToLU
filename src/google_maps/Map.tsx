@@ -25,6 +25,9 @@ const busPath: LatLng[] = [
   },
   { lat: 56.966251, lng: 24.144763 },
   { lat: 56.962274, lng: 24.135035 },
+
+  { lat: 56.96106105039939, lng: 24.132669084875268 },
+  { lat: 56.96011635637041, lng: 24.130097097507655 },
   { lat: 56.958852, lng: 24.12576 },
   { lat: 56.954422, lng: 24.117707 },
   { lat: 56.951946, lng: 24.113688 },
@@ -43,7 +46,7 @@ type SliderProps = {
 
 const Slider = ({ value, onChange }: SliderProps) => {
   return (
-    <div style={{ position: "fixed", zIndex: 10000, left: 0, right: 0, bottom: 0 }}>
+    <div style={{ position: "fixed", zIndex: 1, left: 0, right: 0, bottom: 0 }}>
       <div className="slidecontainer">
         <input
           type="range"
@@ -162,7 +165,7 @@ const MapComponent = ({ isDark }: MapComponentProps) => {
   return (
     <>
       <Slider value={t * sliderScale} onChange={(e) => setT(e.target.value / sliderScale)} />
-      <div style={{ position: "absolute", zIndex: 10000, left: "50%", bottom: 100 }}>
+      <div style={{ position: "absolute", zIndex: 1, left: "50%", bottom: 100 }}>
         <button
           className="secondary-button"
           style={{ position: "relative", left: "-50%", width: "100px", height: "50px" }}
