@@ -162,6 +162,7 @@ const MapComponent = ({ isDark, setCurrentlyOpenModal }: MapComponentProps) => {
   }, [t]);
 
   if (!isLoaded) return <></>;
+  const windowWidth = window.innerWidth;
   const sliderScale = 1000;
   console.log("pos", position);
   return (
@@ -179,7 +180,7 @@ const MapComponent = ({ isDark, setCurrentlyOpenModal }: MapComponentProps) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={14}
+        zoom={windowWidth <= 768 ? (windowWidth <= 430 ? 12 : 13) : 14}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={options}
