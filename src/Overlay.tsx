@@ -45,7 +45,7 @@ const Overlay = ({ isOpen, setIsOpen, isDark, setIsDark }: OverlayProps) => {
           position: "absolute",
           right: 45,
           top: 43,
-          zIndex: 1000,
+          zIndex: 1,
         }}
       >
         <i
