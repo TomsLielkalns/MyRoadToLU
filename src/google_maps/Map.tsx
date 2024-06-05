@@ -10,7 +10,7 @@ const containerStyle = {
   height: "100vh",
 };
 
-type LatLng = {
+export type LatLng = {
   lat: number;
   lng: number;
 };
@@ -107,7 +107,7 @@ const MapComponent = () => {
       />
       <Marker position={dormPos} />
       <Marker position={position} icon={bus} />
-      <ImageMarkers isLoaded={isLoaded} isDarkTheme={isDarkTheme} />
+      <ImageMarkers isLoaded={isLoaded} isDarkTheme={isDarkTheme} path={travelledPath} />
     </GoogleMap>
   );
 };

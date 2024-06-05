@@ -42,14 +42,16 @@ import {
   FreedomMonumentDark,
   VermaneGardenDark,
 } from "./markerImages";
+import { LatLng } from "./Map";
 
 interface ImageMarkersProps {
   isLoaded: boolean;
   isDarkTheme: boolean;
+  path: LatLng[];
 }
 
-export const ImageMarkers = ({ isLoaded, isDarkTheme }: ImageMarkersProps) => {
-  if (!isLoaded) {
+export const ImageMarkers = ({ isLoaded, isDarkTheme, path }: ImageMarkersProps) => {
+  if (!isLoaded || !google.maps.geometry) {
     // need to wait for map to load to access google object
     return null;
   }
@@ -141,7 +143,17 @@ export const ImageMarkers = ({ isLoaded, isDarkTheme }: ImageMarkersProps) => {
       },
       key: "vermaneGarden",
     },
-  ];
+  ].filter((marker) => {
+    if (marker.key === "lu") return true;
+    const pathDist = path.reduce((acc: number, coord: LatLng) => {
+      const distFromPathPoint = google.maps.geometry.spherical.computeDistanceBetween(
+        new google.maps.LatLng(marker.position.lat, marker.position.lng),
+        new google.maps.LatLng(coord.lat, coord.lng)
+      );
+      return Math.min(distFromPathPoint, acc);
+    }, Infinity);
+    return pathDist < 300;
+  });
 
   return (
     <>
