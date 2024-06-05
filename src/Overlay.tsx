@@ -19,14 +19,12 @@ const Overlay = ({ isOpen, setIsOpen, isDark, setIsDark }: OverlayProps) => {
                 clearTimeout(timeout);
                 timeout = 0;
                 if (!isOpen) {
-                  // @ts-expect-error need fix
-                  setIsOpen((prev) => !prev);
+                  setIsOpen(!isOpen);
                   return;
                 }
 
                 timeout = setTimeout(() => {
-                  // @ts-expect-error need fix
-                  setIsOpen((prev) => !prev);
+                  setIsOpen(!isOpen);
                 }, 1000);
               }}
             />
@@ -54,8 +52,7 @@ const Overlay = ({ isOpen, setIsOpen, isDark, setIsDark }: OverlayProps) => {
           className={isDark ? "fa fa-sun" : "fa fa-moon"}
           style={{ fontSize: 30, cursor: "pointer", color: isDark ? "#f3edee" : "#2b2d31" }}
           onClick={() => {
-            // @ts-expect-error need fix
-            setIsDark((prev) => !prev);
+            setIsDark(!isDark);
             document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
           }}
         />

@@ -4,6 +4,8 @@ html[data-theme="dark"] {
   --color-primary: #96696c;
   --color-secondary: #4e4537;
   --color-accent: #757252;
+  --border05: 5px;
+  --font-size-1: 14px;
 }
 
 html[data-theme="light"] {
@@ -153,4 +155,17 @@ html[data-theme="light"] {
   height: 25px;
   background: var(--color-accent);
   cursor: pointer;
+}
+
+.secondary-button {
+  padding: 0.5em 2em;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+  border-radius: var(--border05);
+  display: inline-block;
+  font-size: var(--font-size-1);
+  z-index: 1;
+  cursor: pointer;
+  transition: transform ease 0.2s;
+  white-space: nowrap;
 }

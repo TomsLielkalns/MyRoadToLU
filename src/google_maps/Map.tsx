@@ -31,19 +31,22 @@ const center = {
   lng: 24.1401608,
 };
 
-const sliderScale = 143;
-// @ts-expect-error need fix
-const Slider = ({ value, onChange }) => {
+type SliderProps = {
+  value: number;
+  onChange: (e: any) => void;
+};
+
+const Slider = ({ value, onChange }: SliderProps) => {
   return (
     <div style={{ position: "fixed", zIndex: 10000, left: 0, right: 0, bottom: 0 }}>
       <div className="slidecontainer">
         <input
           type="range"
-          min="0"
-          max="1000"
+          min="1"
+          max="999"
           value={value}
           className="slider"
-          id="slider"
+          id="myRange"
           onChange={onChange}
         />
       </div>
@@ -54,13 +57,57 @@ const Slider = ({ value, onChange }) => {
 type MapComponentProps = {
   isDark: boolean;
 };
+const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(value, max));
+
+const calculateSegmentProportions = (points: any) => {
+  const distances = [];
+  let totalDistance = 0;
+
+  // Calculate distances between consecutive points
+  for (let i = 0; i < points.length - 1; i++) {
+    const dx = points[i + 1][0] - points[i][0];
+    const dy = points[i + 1][1] - points[i][1];
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    distances.push(distance);
+    totalDistance += distance;
+  }
+
+  return distances.map((distance) => distance / totalDistance);
+};
+const points = busPath.map((p) => [p.lat, p.lng]);
+const segments = calculateSegmentProportions(points);
+const getCoordinatesAndPath = (t: number): [LatLng[], { lat: number; lng: number }] => {
+  const traveledPath: LatLng[] = [];
+  const clampedT = clamp(t, 0, 1);
+
+  let total = 0;
+  let segmentId = 0;
+  for (let i = 0; i < segments.length; i++) {
+    total += segments[i];
+    traveledPath.push(busPath[i]);
+    if (clampedT <= total) {
+      segmentId = i;
+      break;
+    }
+  }
+  const localT = (clampedT - (total - segments[segmentId])) / segments[segmentId];
+
+  const start = points[segmentId];
+  const end = points[segmentId + 1];
+  const lat = start[0] + localT * (end[0] - start[0]);
+  const lng = start[1] + localT * (end[1] - start[1]);
+  console.log(lat, lng);
+  traveledPath.push({ lat, lng });
+  return [traveledPath, { lat, lng }];
+};
 
 const MapComponent = ({ isDark }: MapComponentProps) => {
   const [_, setMap] = useState({});
   const [position, setPosition] = useState(busPath[0]);
   const [travelledPath, setTravelledPath] = useState<LatLng[]>([busPath[0]]);
-  const step = useRef(0);
-
+  const [t, setT] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const timeOffset = useRef(0);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCF6vwCM9RH6H3y_2QSPXxP4WG4mtz60Pc",
@@ -74,16 +121,18 @@ const MapComponent = ({ isDark }: MapComponentProps) => {
     setMap({});
   }, []);
 
-  const interpolatePosition = (path: LatLng[], step: number) => {
-    const index = Math.floor(step);
-    const t = step - index;
-    const from = path[index];
-    const to = path[index + 1];
-    return {
-      lat: from.lat + (to.lat - from.lat) * t,
-      lng: from.lng + (to.lng - from.lng) * t,
-    };
-  };
+  const frameRef = useRef<number>(0);
+  const frame = useCallback((time: number) => {
+    if (!timeOffset.current) timeOffset.current = time;
+    setT(((0.05 * (time - timeOffset.current)) / 1000) % 1);
+    frameRef.current = requestAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (isPlaying) requestAnimationFrame(frame);
+    else timeOffset.current = 0;
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [frame, isPlaying]);
 
   const options = {
     // zoomControl: false, // Disable zoom control
@@ -96,34 +145,27 @@ const MapComponent = ({ isDark }: MapComponentProps) => {
   };
 
   useEffect(() => {
-    if (busPath.length > 1) {
-      const interval = setInterval(() => {
-        step.current += 0.01;
-        if (step.current >= busPath.length - 1) {
-          step.current = 0;
-          setTravelledPath([busPath[0]]); // loop back to the start
-        }
-        const nextPosition = interpolatePosition(busPath, step.current);
-        setPosition(nextPosition);
-        setTravelledPath((prevPath) => [...prevPath, nextPosition]);
-      }, 50);
-
-      return () => clearInterval(interval);
-    }
-  }, []);
+    console.log(t);
+    const [travPath, { lat, lng }] = getCoordinatesAndPath(t);
+    setTravelledPath(travPath);
+    setPosition({ lat, lng });
+  }, [t]);
 
   if (!isLoaded) return <></>;
-
+  const sliderScale = 1000;
+  console.log("pos", position);
   return (
     <>
-      <Slider
-        value={step.current * sliderScale}
-        // @ts-expect-error need fix
-        onChange={(e) => {
-          step.current = e.target.value / sliderScale;
-        }}
-      />
-
+      <Slider value={t * sliderScale} onChange={(e) => setT(e.target.value / sliderScale)} />
+      <div style={{ position: "absolute", zIndex: 10000, left: "50%", bottom: 100 }}>
+        <button
+          className="secondary-button"
+          style={{ position: "relative", left: "-50%", width: "100px", height: "50px" }}
+          onClick={() => setIsPlaying(!isPlaying)}
+        >
+          {isPlaying ? "Stop" : "Play"}
+        </button>
+      </div>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
