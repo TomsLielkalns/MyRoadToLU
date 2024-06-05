@@ -3,13 +3,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { dormPos } from "./markerPositions";
 import { bus } from "./markerImages";
 import { ImageMarkers } from "./ImageMarkers";
+import customStyle from "./customStyle.json";
 
-export const containerStyle = {
+const containerStyle = {
   width: "100vw",
   height: "100vh",
 };
 
-export type LatLng = {
+type LatLng = {
   lat: number;
   lng: number;
 };
@@ -30,6 +31,8 @@ const center = {
   lng: 24.1401608,
 };
 
+const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 const options = {
   // zoomControl: false, // Disable zoom control
   // gestureHandling: "none", // Disable all user gestures for the map
@@ -37,6 +40,7 @@ const options = {
   mapTypeControl: false, // Disable map type control
   streetViewControl: false, // Disable Street View control
   disableDefaultUI: true, // Disable all default UI
+  styles: isDarkTheme ? customStyle : undefined,
 };
 
 const MapComponent = () => {

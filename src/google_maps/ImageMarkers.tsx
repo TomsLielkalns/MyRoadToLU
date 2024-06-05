@@ -41,40 +41,73 @@ export const ImageMarkers = ({ isLoaded }: ImageMarkersProps) => {
   }
 
   const markersData = [
-    { position: LUPos, icon: { url: LUmarker, scaledSize: new google.maps.Size(75, 105) } },
-    { position: VEFpalacePos, icon: { url: VEFpalace, scaledSize: new google.maps.Size(50, 70) } },
-    { position: gaisaTiltsPos, icon: { url: GaisaTilts, scaledSize: new google.maps.Size(50, 70) } },
+    { position: LUPos, icon: { url: LUmarker, scaledSize: new google.maps.Size(75, 105) }, key: "lu" },
+    {
+      position: VEFpalacePos,
+      icon: { url: VEFpalace, scaledSize: new google.maps.Size(50, 70) },
+      key: "vefPalace",
+    },
+    {
+      position: gaisaTiltsPos,
+      icon: { url: GaisaTilts, scaledSize: new google.maps.Size(50, 70) },
+      key: "gaisaTilts",
+    },
     {
       position: evolutionBuildingPos,
       icon: { url: EvolutionBuilding, scaledSize: new google.maps.Size(50, 70) },
+      key: "evolutionBuilding",
     },
     {
       position: newGertrudesChurchPos,
       icon: { url: NewGertrudesChurch, scaledSize: new google.maps.Size(50, 70) },
+      key: "newGertrudesChurch",
     },
-    { position: dailesTheaterPos, icon: { url: DailesTheater, scaledSize: new google.maps.Size(50, 70) } },
-    { position: cornerHousePos, icon: { url: CornerHouse, scaledSize: new google.maps.Size(50, 70) } },
+    {
+      position: dailesTheaterPos,
+      icon: { url: DailesTheater, scaledSize: new google.maps.Size(50, 70) },
+      key: "dailesTheater",
+    },
+    {
+      position: cornerHousePos,
+      icon: { url: CornerHouse, scaledSize: new google.maps.Size(50, 70) },
+      key: "cornerHouse",
+    },
     {
       position: oldGertrudesChurchPos,
       icon: { url: OldGertrudesChurch, scaledSize: new google.maps.Size(50, 70) },
+      key: "oldGertrudesChurch",
     },
-    { position: ANChurchPos, icon: { url: ANChurch, scaledSize: new google.maps.Size(50, 70) } },
-    { position: radisonsPos, icon: { url: Radisons, scaledSize: new google.maps.Size(50, 70) } },
+    {
+      position: ANChurchPos,
+      icon: { url: ANChurch, scaledSize: new google.maps.Size(50, 70) },
+      key: "anChurch",
+    },
+    {
+      position: radisonsPos,
+      icon: { url: Radisons, scaledSize: new google.maps.Size(50, 70) },
+      key: "radisons",
+    },
     {
       position: orthodoxCathedralPos,
       icon: { url: OrthodoxCathedral, scaledSize: new google.maps.Size(50, 70) },
+      key: "orthodoxCathedral",
     },
     {
       position: freedomMonumentPos,
       icon: { url: FreedomMonument, scaledSize: new google.maps.Size(50, 70) },
+      key: "freedomMonument",
     },
-    { position: vermaneGardenPos, icon: { url: VermaneGarden, scaledSize: new google.maps.Size(50, 70) } },
+    {
+      position: vermaneGardenPos,
+      icon: { url: VermaneGarden, scaledSize: new google.maps.Size(50, 70) },
+      key: "vermaneGarden",
+    },
   ];
 
   return (
     <>
-      {markersData.map((marker, index) => (
-        <Marker key={index} position={marker.position} icon={marker.icon} />
+      {markersData.map((marker) => (
+        <Marker key={marker.key} position={marker.position} icon={marker.icon} />
       ))}
     </>
   );
