@@ -38,7 +38,7 @@ html[data-theme="light"] {
   top: 0;
   z-index: 2;
   max-height: 100vh;
-  overflow-y: scroll;
+  overflow-y: clip;
   overflow-x: hidden;
 }
 
@@ -115,6 +115,7 @@ html[data-theme="light"] {
 #menu,
 #menu-open {
   //   position: absolute;
+  overflow-y: scroll;
   text-wrap: pretty;
   width: 25em;
   height: 79.6vh;

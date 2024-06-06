@@ -11,7 +11,7 @@ const Overlay = ({ isOpen, setIsOpen, isDark, setIsDark, setCurrentlyOpenModal }
 
   return (
     <>
-      <div className="overlay" style={{ overflowY: isOpen ? "scroll" : "hidden" }}>
+      <div className="overlay" style={{ overflowY: "clip" }}>
         <nav role="navigation">
           <div id="menuToggle" style={{ height: isOpen ? "100vh" : "15vh" }}>
             <input
@@ -26,14 +26,14 @@ const Overlay = ({ isOpen, setIsOpen, isDark, setIsDark, setCurrentlyOpenModal }
 
                 timeout = setTimeout(() => {
                   setIsOpen(!isOpen);
-                }, 200);
+                }, 400);
               }}
             />
             <span></span>
             <span></span>
             <span></span>
 
-            <ul id={"menu"} style={{ height: " 100%" }}>
+            <ul id="menu">
               <a onClick={() => setCurrentlyOpenModal("vefPalace")}>
                 <li>VEF Kultūras pils</li>
               </a>
