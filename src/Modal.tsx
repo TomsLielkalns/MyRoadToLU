@@ -118,7 +118,7 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
     <>
       <h1 className="text modal-h1">{title}</h1>
       <img src={image} alt={imageAlt} style={{ width: "100%" }} />
-      <p>{content}</p>
+      <p className="text">{content}</p>
     </>
   );
 };
