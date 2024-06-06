@@ -174,7 +174,7 @@ const MapComponent = ({ isDark, setCurrentlyOpenModal }: MapComponentProps) => {
           style={{ position: "relative", left: "-50%", width: "100px", height: "50px" }}
           onClick={() => setIsPlaying(!isPlaying)}
         >
-          {isPlaying ? "Stop" : "Play"}
+          {isPlaying ? "Beigt" : "Sākt"}
         </button>
       </div>
       <GoogleMap

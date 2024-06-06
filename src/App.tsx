@@ -16,7 +16,13 @@ function App() {
     <>
       <MapComponent isDark={isDark} setCurrentlyOpenModal={setCurrentlyOpenModal} />
       <Modal currentlyOpenModal={currentlyOpenModal} setCurrentlyOpenModal={setCurrentlyOpenModal} />
-      <Overlay isOpen={isOpen} setIsOpen={setIsOpen} isDark={isDark} setIsDark={setIsDark} />
+      <Overlay
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        isDark={isDark}
+        setIsDark={setIsDark}
+        setCurrentlyOpenModal={setCurrentlyOpenModal}
+      />
     </>
   );
 }
