@@ -54,7 +54,7 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
     case "newGertrudesChurch":
       title = "Rīgas Jaunā Svētās Ģertrūdes baznīca";
       content =
-        'Ēkas novietojums patīkamā vietā - Cēsu ielas un Brīvības ielas "saliņas" galā. Braucot garām vienmēr pie sevis nodomāju - "Kā cilvēki tiek uz baznīcu ja nav nevienas gājēju pārejas?".';
+        'Ēkas novietojums patīkamā vietā - Cēsu ielas un Brīvības ielas "saliņas" galā. Braucot garām vienmēr pie sevis nodomāju - "Kā, cilvēki tiek uz baznīcu, ja nav nevienas gājēju pārejas?".';
       image = new_gertrudes_baznica;
       imageAlt = "Rīgas Jaunā Svētās Ģertrūdes baznīca";
       break;
@@ -100,7 +100,7 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
     case "freedomMonument":
       title = "Brīvības piemineklis";
       content =
-        "Ir bijusi lieliska iespēja spert soli iekšā piemineklī un ierakstīt savu vārdu grāmatā. Diemžēl ja iekšā saiet daudz cilvēku, tur nav ventilācija un gandriz noģību.";
+        "Ir bijusi lieliska iespēja spert soli iekšā piemineklī un ierakstīt savu vārdu grāmatā. Diemžēl, ja iekšā saiet daudz cilvēku, tur nav ventilācija un gandriz noģību.";
       image = brivibas_piemineklis;
       imageAlt = "Brīvības piemineklis";
       break;
