@@ -45,11 +45,11 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
       imageAlt = "Gaisa tilts";
       break;
     case "evolutionBuilding":
-      title = "Evolution Latvia ēka";
+      title = "Evolution ēka";
       content =
         'Vienmēr likusies modernākā ēka, kura redzama uz Brīvības ielas, un novietojums arī ir vizuāli patīkams, jo līdzīgi, kā jaunā Ģertrūdes baznīca - ēka atrodas Cēsu ielas un Brīvības ielas "saliņas" galā.';
       image = evolution;
-      imageAlt = "Evolution Latvia ēka";
+      imageAlt = "Evolution ēka";
       break;
     case "newGertrudesChurch":
       title = "Rīgas Jaunā Svētās Ģertrūdes baznīca";
@@ -80,10 +80,10 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
       imageAlt = "Rīgas Vecā Svētās Ģertrūdes luterāņu baznīca";
       break;
     case "anChurch":
-      title = "Svētā Aleksandra Ņevska pareizticīgo baznīca";
+      title = "Rīgas Svētā Ņevas Aleksandra baznīca";
       content = "Līdz šij dienai nezināju, ka šī ir baznīca. Ēka izceļas ar savu krāsu.";
       image = AN_baznica;
-      imageAlt = "Svētā Aleksandra Ņevska pareizticīgo baznīca";
+      imageAlt = "Rīgas Svētā Ņevas Aleksandra baznīca";
       break;
     case "radisons":
       title = "Radisson Blu";
@@ -92,10 +92,10 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
       imageAlt = "Radisson Blu";
       break;
     case "orthodoxCathedral":
-      title = "Rīgas Kristus Piedzimšanas pareizticīgo katedrāle";
+      title = "Rīgas Kristus Piedzimšanas katedrāle";
       content = "Manuprāt, visiespaidīgākā katedrale vai baznīca pa ceļam uz LU.";
       image = orthadox_katedrale;
-      imageAlt = "Rīgas Kristus Piedzimšanas pareizticīgo katedrāle";
+      imageAlt = "Rīgas Kristus Piedzimšanas katedrāle";
       break;
     case "freedomMonument":
       title = "Brīvības piemineklis";
