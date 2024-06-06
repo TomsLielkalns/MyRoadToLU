@@ -52,11 +52,11 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
       imageAlt = "Evolution Latvia ēka";
       break;
     case "newGertrudesChurch":
-      title = "Rīgas Jaunā Svētās Ģertrūdes evaņģēliski luteriskā baznīca";
+      title = "Rīgas Jaunā Svētās Ģertrūdes baznīca";
       content =
         'Ēkas novietojums patīkamā vietā - Cēsu ielas un Brīvības ielas "saliņas" galā. Braucot garām vienmēr pie sevis nodomāju - "Kā cilvēki tiek uz baznīcu ja nav nevienas gājēju pārejas?".';
       image = new_gertrudes_baznica;
-      imageAlt = "Rīgas Jaunā Svētās Ģertrūdes evaņģēliski luteriskā baznīca";
+      imageAlt = "Rīgas Jaunā Svētās Ģertrūdes baznīca";
       break;
     case "dailesTheater":
       title = "Dailes teātris";
@@ -73,11 +73,11 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
       imageAlt = "Stūra Māja";
       break;
     case "oldGertrudesChurch":
-      title = "Rīgas Vecā Svētās Ģertrūdes evaņģēliski luteriskā baznīca";
+      title = "Rīgas Vecā Svētās Ģertrūdes luterāņu baznīca";
       content =
         "Vienmēr patīkami redzēt vecās ēkas, kuras ir saglabājušās līdz mūsdienām. Parasti asocējās ar visskaļāko zvanu centrā.";
       image = old_gertrudes_baznica;
-      imageAlt = "Rīgas Vecā Svētās Ģertrūdes evaņģēliski luteriskā baznīca";
+      imageAlt = "Rīgas Vecā Svētās Ģertrūdes luterāņu baznīca";
       break;
     case "anChurch":
       title = "Svētā Aleksandra Ņevska pareizticīgo baznīca";
