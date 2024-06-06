@@ -107,7 +107,7 @@ const MapKeyToText = ({ currentlyOpenModal }: MapKeyToTextProps) => {
     case "vermaneGarden":
       title = "Vērmanes dārzs";
       content =
-        "Vērmanes dārzs ir viena no manām iecienītākajām vietām, jo tas ir viens no skaistākajiem un sakoptākajiem parkiem. Ejot cauri vienmēr esmu jutis sava veida iekšēju mieru.";
+        "Vērmanes dārzs ir viena no manām iecienītākajām vietām, jo tas ir viens no skaistākajiem un sakoptākajiem parkiem. Ejot cauri, vienmēr esmu jutis sava veida iekšēju mieru.";
       image = vermanes;
       imageAlt = "Vērmanes dārzs";
       break;
